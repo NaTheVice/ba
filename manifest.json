@@ -1,0 +1,45 @@
+{
+  "name": "ecocrowd",
+  "short_name": "ecocrowd",
+  "theme_color": "#8ebf48",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "description": "Die Plattform für nachhaltige Projekte",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "https://ecocrowd.herokuapp.com",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "assets/icons/ec_icon_48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/ec_icon_72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/ec_icon_96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/ec_icon_144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
