@@ -1,0 +1,13 @@
+app-slider{
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+
+@media screen and (max-width: 768px) {
+  
+    app-slider{
+        margin-top: -70px;
+    }
+}

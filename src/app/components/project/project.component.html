@@ -1,0 +1,73 @@
+
+<div *ngIf="loading$ | async" id="loader" class="loading-spinner"></div>
+<div *ngIf="project$ | async as project">
+  <h1 class="project-name">{{project.title}}
+    <span class="font-small">von
+      <a title="project.merchant.title" href="{{project.merchant.url}}"> {{project.merchant.title}}</a>
+    </span>
+  </h1>
+  <div class="row justify-content-center">
+    <div class="tabs">
+
+      <input type="radio" id="tab1" name="tab-control" checked>
+      <input type="radio" id="tab2" name="tab-control">
+      <input type="radio" id="tab3" name="tab-control">
+      <input type="radio" id="tab4" name="tab-control">
+      <ul>
+        <li class="info" title="Info">
+          <label for="tab1" role="button">
+            <i class="fas fa-info-circle"></i>
+            <br>
+            <span>Info</span>
+          </label>
+        </li>
+        <li title="Blog">
+          <label for="tab2" role="button">
+            <i class="fas fa-rss"></i>
+            <br>
+            <span>Blog</span>
+          </label>
+        </li>
+        <li title="Unterstützer">
+          <label for="tab3" role="button">
+            <i class="fas fa-handshake"></i>
+            <br>
+            <span>Support</span>
+          </label>
+        </li>
+        <li class="kommentare" title="Kommentare">
+          <label for="tab4" role="button">
+            <i class="fas fa-comments"></i>
+            <br>
+            <span>Kommentare</span>
+          </label>
+        </li>
+      </ul>
+
+     <!--  <div class="slider">
+        <div class="indicator"></div>
+      </div> -->
+      <div class="content">
+        <section>
+          <h2>Info</h2>
+          <app-project-info></app-project-info>
+        </section>
+        <section>
+          <h2>Blog</h2>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quas adipisci a accusantium eius ut voluptatibus ad impedit
+          nulla, ipsa qui. Quasi temporibus eos commodi aliquid impedit amet, similique nulla.</section>
+        <section>
+          <h2>Unterstützer</h2>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nemo ducimus eius, magnam error quisquam sunt voluptate labore,
+          excepturi numquam! Alias libero optio sed harum debitis! Veniam, quia in eum.</section>
+        <section>
+          <h2>Kommentare</h2>
+          <app-project-comments></app-project-comments>
+        </section>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

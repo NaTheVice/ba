@@ -1,0 +1,155 @@
+<div *ngIf="project$ | async as project" id="secondary" role="complementary">
+  <div id="sidebar_inner">
+    <!--project-ifo-short-->
+    <div class="project-info-short">
+      <div class="pledge_section_title_label">Nächstes Etappenziel: {{project.next_goal}} €</div>
+      <div class="pledge_etappe">
+        <b>
+          <i class="fas fa-flag"></i> Zielsumme: </b>{{project.goals[project.goals.length-1].amount}} € in {{project.goals.length}} Etappen</div>
+      <div class="pledge_start_date">
+        <b>
+          <i class="fas fa-calendar-alt"></i> Start: </b>{{project.post_date}}
+      </div>
+      <div class="pledge_end_date">
+        <b>
+          <i class="fas fa-clock"></i> End: </b>{{project.expiration_date}}
+      </div>
+
+      <div>Dieses Projekt kann noch bis zum {{project.expiration_date}} unterstützt werden. Dem Projektinhaber wird die bis dahin erreichte
+        Summe ausgezahlt, auch wenn der Zielbetrag nicht erreicht wurde.
+      </div>
+
+    </div>
+    <!-- mechants infos -->
+    <div class="merchant-info clearfix">
+      <div [innerHTML]="project.merchant.avatar" class="merchant-img">
+        </div>
+      <div class="merchant-text">
+        Projektstarter:
+        <br>
+        <a href="{{project.merchant.url}}" title="{{project.merchant.title}}">{{project.merchant.title}}</a>
+        <div>{{project.merchant.contact_city}}, {{project.merchant.contact_country}}</div>
+        <div class="offer_links"></div>
+      </div>
+      <!--  .merchant_byline -->
+    </div>
+    <!--  project-buttons -->
+    <div class="project-buttons">
+      <div class="contact_btn">
+        <span class="read_more left_top_btn">
+          <a href="https://www.ecocrowd.de/benutzerkonto/" title="Please login in!" class="btn btn_block btn_small">Kontakt</a>
+        </span>
+        <span class="read_more right_top_btn">
+          <a href="{{project.merchant.url}}" title="{{project.merchant.title}}" class="btn btn_block btn_small">Profil</a>
+        </span>
+      </div>
+      <div class="feedback_btn">
+        <span class="read_more left_bottom_btn">
+          <a href="https://www.ecocrowd.de/benutzerkonto/" title="Please login in!" class="btn btn_block btn_small">Feedback</a>
+        </span>
+        <span class="read_more right_bottom_btn">
+          <a href="https://www.ecocrowd.de/benutzerkonto/" title="Please login in!" class="btn btn_block btn_small">Gefällt mir</a>
+        </span>
+      </div>
+
+    </div>
+    <!--project share-->
+    <div class="project-share">
+      <div class="pledge_section_title_label">In den Sozialen Medien teilen</div>
+      <div id="share_section" class="section_content border_bottom clearfix">
+        <a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-facebook nolightbox"
+          data-provider="facebook" target="_blank" rel="nofollow" title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.ecocrowd.de%2Fprojekte%2F{{project.slug}}%2F"
+          style="font-size: 0px; width:48px;height:48px;margin:0;margin-bottom:8px;margin-right:8px;">
+          <img alt="Facebook" title="Share on Facebook" class="synved-share-image synved-social-image synved-social-image-share" width="48"
+            height="48" style="display: inline; width:48px;height:48px; margin: 0; padding: 0; border: none; box-shadow: none;"
+            src="https://www.ecocrowd.de/wp-content/plugins/social-media-feather/synved-social/image/social/regular/96x96/facebook.png">
+        </a>
+        <a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-twitter nolightbox"
+          data-provider="twitter" target="_blank" rel="nofollow" title="Share on Twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.ecocrowd.de%2Fprojekte%2F{{project.slug}}%2F&amp;text=Schau%20dir%20das%20an%21"
+          style="font-size: 0px; width:48px;height:48px;margin:0;margin-bottom:8px;margin-right:8px;">
+          <img alt="twitter" title="Share on Twitter" class="synved-share-image synved-social-image synved-social-image-share" width="48"
+            height="48" style="display: inline; width:48px;height:48px; margin: 0; padding: 0; border: none; box-shadow: none;"
+            src="https://www.ecocrowd.de/wp-content/plugins/social-media-feather/synved-social/image/social/regular/96x96/twitter.png">
+        </a>
+        <a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-google_plus nolightbox"
+          data-provider="google_plus" target="_blank" rel="nofollow" title="Share on Google+" href="https://plus.google.com/share?url=https%3A%2F%2Fwww.ecocrowd.de%2Fprojekte%2F{{project.slug}}%2F"
+          style="font-size: 0px; width:48px;height:48px;margin:0;margin-bottom:8px;margin-right:8px;">
+          <img alt="google_plus" title="Share on Google+" class="synved-share-image synved-social-image synved-social-image-share"
+            width="48" height="48" style="display: inline; width:48px;height:48px; margin: 0; padding: 0; border: none; box-shadow: none;"
+            src="https://www.ecocrowd.de/wp-content/plugins/social-media-feather/synved-social/image/social/regular/96x96/google_plus.png">
+        </a>
+        <a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-mail nolightbox"
+          data-provider="mail" rel="nofollow" title="Share by email" href="mailto:?subject={{project.slug}}&amp;body=Schau%20dir%20das%20an%21:%20https%3A%2F%2Fwww.ecocrowd.de%2Fprojekte%2F{{project.slug}}%2F"
+          style="font-size: 0px; width:48px;height:48px;margin:0;margin-bottom:8px;margin-right:8px;">
+          <img alt="mail" title="Share by email" class="synved-share-image synved-social-image synved-social-image-share" width="48"
+            height="48" style="display: inline; width:48px;height:48px; margin: 0; padding: 0; border: none; box-shadow: none;"
+            src="https://www.ecocrowd.de/wp-content/plugins/social-media-feather/synved-social/image/social/regular/96x96/mail.png">
+        </a>
+        <a class="synved-social-button synved-social-button-share synved-social-size-48 synved-social-resolution-single synved-social-provider-linkedin nolightbox"
+          data-provider="linkedin" target="_blank" rel="nofollow" title="Share on Linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.ecocrowd.de%2Fprojekte%2F{{project.slug}}%2F&amp;title={{project.slug}}"
+          style="font-size: 0px; width:48px;height:48px;margin:0;margin-bottom:8px;">
+          <img alt="linkedin" title="Share on Linkedin" class="synved-share-image synved-social-image synved-social-image-share" width="48"
+            height="48" style="display: inline; width:48px;height:48px; margin: 0; padding: 0; border: none; box-shadow: none;"
+            src="https://www.ecocrowd.de/wp-content/plugins/social-media-feather/synved-social/image/social/regular/96x96/linkedin.png">
+        </a>
+      </div>
+    </div>
+
+
+    <!-- .project_widget -->
+
+
+    <div class="pledge_widget clearfix">
+
+      <div class="pledge_section well well_invert clearfix">
+
+        <div class="project-finance-info">
+          <div class="pledge_section_title_label">Finanziere das Projekt hier</div>
+          <div class="pledge_section_title_description">Unterstütze das Projekt, indem du dir eines der aufgelisteten Tauschgüter aussuchst und auf "Projekt unterstützen
+            und dieses Tauschgut wählen" klickst. Wenn du Fragen dazu hast, besuche unseren
+            <a href="/help-and-contact" title="Hilfe &amp; Kontakt Bereich">Hilfe &amp; Kontakt Bereich</a>.</div>
+        </div>
+
+
+        <div *ngFor="let pledge of project.attributes, let i = index" class="pledge_reward border_bottom clearfix">
+          <div class="pledge_title clearfix">
+            <div *ngIf="i===0" class="pledge_label clearfix">{{pledge.title}}</div>
+            <div *ngIf="i>0" class="pledge_label clearfix">Unterstütze mit {{pledge.price}} € oder mehr </div>
+          </div>
+
+          <!--  .pledge_title -->
+          <div *ngIf="i===0" class="pledge_description clearfix">
+            <p [innerHTML]="pledge.description" class="pledge_description_label clearfix">
+            </p>
+            <!--  .pledge_description_label -->
+            <a class="btn center-btn-reward" href="https://www.ecocrowd.de/cart/?add_to_cart=1064521&amp;attribute_id={{pledge.id}}">Unterstütze dieses Projekt</a>
+          </div>
+
+          <div *ngIf="i>0" class="pledge_description clearfix">
+            <div class="pledge_description_label clearfix">
+
+              <h4>{{pledge.title}}</h4>
+              <p [innerHTML]="pledge.description"></p>
+
+              <div class="shipment_attribute">Voraussichtliches Lieferdatum: {{shipment_date_month}} / {{shipment_date_year}}</div>
+              <div class="pledge_status_wrap clearfix">
+                <div class="pledge_status_label">Verfügbar: {{pledge.remaining_purchases}} von {{pledge.max_purchases}}</div>
+
+              </div>
+              <!--  .pedge_status_wrap -->
+            </div>
+            <!--  .pledge_description_label -->
+            <a class="btn center-btn-reward" href="https://www.ecocrowd.de/cart/?add_to_cart=1064521&amp;attribute_id={{pledge.id}}">Projekt unterstützen und dieses Tauschgut wählen</a>
+          </div>
+          <!--  .pledge_description -->
+        </div>
+
+        </div>
+        <!--  .pledge_reward -->
+      </div>
+      <!--  .pledge_section well -->
+    </div>
+    <!-- .pledge_widget -->
+
+
+</div>

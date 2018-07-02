@@ -1,0 +1,64 @@
+<h1 class="main-headline">Aktuelle Crowdfunding Projekte</h1>
+
+  <div class="row excerpts-row">
+    <!-- <i *ngIf="loading$ | async" class="fas fa-spin fa-spinner fa-2x"></i> -->
+    <!-- <div *ngFor="let project of excerpts" class="card col-xl-4 col-lg-2 col-sm-5" (click)="selectProject(project.id, project.slug)"><img src="{{project[881250].photo}}">{{project[881250].summary}} </div> -->
+    <div *ngFor="let project of excerpts$ | async" class="card col-xl-4 col-lg-2 col-sm-5" (click)="selectProject(project.id, project.slug)">
+      <div class="excerpt-img">
+          <i *ngIf="loading$ | async" class="fas fa-spin fa-spinner fa-2x"></i>
+      <img  *ngIf="project.photo_small !== ''" class="card-img-top" src={{project.photo_small}} alt="Card image cap">
+    </div>
+      <div class="neu-banner">NEU</div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href={{project.url}}
+            title={{project.title}} rel="bookmark">{{project.title}}</a>
+        </h5>
+        <h6 class="card-subtitle text-muted">
+          <a href={{project.merchant.url}} title={{project.merchant.title}}>von {{project.merchant.title}}</a>
+        </h6>
+        <p class="card-text">{{project.summary}}</p>
+        <div class="location clearfix">
+           
+          <div class="card-location clearfix">
+            <i class="fas fa-map-marker"></i>
+            <span class="location-span">{{project.city}}, {{project.country}}</span>
+          </div>
+        
+
+          <div class="entry_type clearfix">
+            <i class="fas fa-euro-sign"></i>
+          </div>
+      
+
+        </div>
+      </div>
+      <div class="card-footer">
+
+        <div id="progress_bar_1028499" class="progress progress_bar percentage_0 clearfix">
+          <span class="bar progress_bar_progress alt_button" [style.width]="project.funded_percent+'%'">&nbsp;</span>
+        </div>
+        <div class="percent_pledged_meta clearfix">
+          <span class="meta_title">Finanziert</span>
+          <p class="meta_value">{{project.funded_current_value}}</p>
+
+        </div>
+     
+
+        <div class="project_remain clearfix">
+          <span class="meta_title">Restdauer</span>
+          <p class="meta_value">{{project.left_days}}</p>
+        </div>
+
+ 
+
+        <div class="purchases_total project_meta clearfix">
+          <span class="meta_title">Etappenziel</span>
+          <p class="meta_value">{{project.next_goal}}</p>
+        </div>
+      
+
+      </div>
+    </div> 
+
+  </div>

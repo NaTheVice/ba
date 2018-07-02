@@ -1,0 +1,223 @@
+<div *ngIf="project$ | async as project" id="projekt_info" class="tab-pane section clearfix active" aria-expanded="true">
+  <div class="row">
+    <div class="col-12 col-xl-8 col-lg-8 col-md-12 col-sm-12">
+  <div class="featured_content lead_section aspect-ratio clearfix">
+    <a title="Start the video" id="start_video">
+      <img class="project-img" src="{{project.photo}}">
+
+      <!--  <span class="kreis" ><span class="dreieck"></span></span> -->
+      <span class="play-video">
+
+        <span class="video_desc">
+          <i class="fas fa-play"></i> Klicke hier und schau dir das Video an!</span>
+      </span>
+
+    </a>
+    <!--  <iframe style="display:none;" width="550px" id="video" height="281px" src="//www.youtube.com/embed/MFa09W1o3y8" frameborder="0"
+      allowfullscreen=""></iframe> -->
+  </div>
+
+  <div id="info_section" class="section_content border_bottom clearfix">
+
+    <ul class="info-section">
+      <li class="info-section-2 clearfix first">
+        <span class="info-section-title">Etappe</span>
+        <p class="info-section-value">{{project.goal_info}}</p>
+      </li>
+      <li class="info-section-2 clearfix">
+        <span class="info-section-title">Unterstützer</span>
+        <p class="info-section-value">{{project.number_of_purchases}}</p>
+      </li>
+      <li class="info-section-2 clearfix">
+        <span class="info-section-title">Finanziert</span>
+        <p class="info-section-value">{{project.funded_current_value}}</p>
+      </li>
+      <li class="info-section-2 clearfix last">
+        <span class="info-section-title">Restdauer</span>
+        <p class="info-section-value">{{project.left_days}}</p>
+      </li>
+    </ul>
+
+  </div>
+
+  <div id="sustain_section" class="section_content border_bottom clearfix">
+
+    <div class="sustain_output">
+
+      <h2 id="mehrwert" (click)="expandedMer = !expandedMer" class="gb_ff expand_header">
+        Mehrwert für die Umwelt
+        <i id="expand_icon" [hidden]="expandedMer" class="fas fa-caret-down expand_icon" aria-hidden="true"></i>
+        <i id="expand_icon" [hidden]="!expandedMer" class="fas fa-caret-up expand_icon" aria-hidden="true"></i>
+      </h2>
+      <div [hidden]="!expandedMer" class="expand" id="expand_mehrwert">
+        <p style="height:30px">Das Projekt schützt oder verbessert die Bereiche…</p>
+        <section>
+          <table class="sustain_table">
+            <tbody>
+
+              <div *ngFor="let sustain of sustainCat, let i = index">
+                <div *ngIf="i<7">
+                  <tr>
+                    <td class="first">
+                      <div [ngClass]="{'grey_rating':project.sustain[i+1] === '0'}" id="sustain_1">{{sustain}}</div>
+                      <input type="hidden" name="{{sustain}}" value="{{project.sustain[i+1]}}">
+                    </td>
+                    <td class="odd">
+                      <div id="rating_1">
+                        <p style="text-align:center;">
+                          <span *ngFor="let star of [5,4,3,2,1]" [ngClass]="{'grey_rating':star > project.sustain[i+1], 'filled':star <= project.sustain[i+1]}">☆</span>
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                </div>
+              </div>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+
+    <div class="sustain_input">
+
+      <h2 id="recources" (click)="expandedRec = !expandedRec" class="gb_ff expand_header">
+        Verwendete Ressourcen
+        <i id="expand_icon" [hidden]="expandedRec" class="fas fa-caret-down expand_icon" aria-hidden="true"></i>
+        <i id="expand_icon" [hidden]="!expandedRec" class="fas fa-caret-up expand_icon" aria-hidden="true"></i>
+      </h2>
+
+      <div [hidden]="!expandedRec" class="expand" id="expand_recources">
+        <p style="height:30px">Die verwendeten Ressourcen sind…</p>
+        <section>
+          <table class="sustain_table">
+            <tbody>
+              <div *ngFor="let sustain of sustainCat, let i = index">
+                <div *ngIf="i>=7">
+                  <tr>
+                    <td class="first">
+                      <div [ngClass]="{'grey_rating':project.sustain[i+1] === '0'}" id="sustain_1">{{sustain}}</div>
+                      <input type="hidden" name="{{sustain}}" value="{{project.sustain[i+1]}}">
+                    </td>
+                    <td class="odd">
+                      <div id="rating_1">
+                        <p style="text-align:center;">
+                          <span *ngFor="let star of [5,4,3,2,1]" [ngClass]="{'filled':star <= project.sustain[i+1] , 'grey_rating':star > project.sustain[i+1]}">☆</span>
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                </div>
+              </div>
+            </tbody>
+          </table>
+        </section>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="the_content" class="entry_content section_content clearfix">
+
+    <h2 id="kurzinfo" (click)="expandedInfo = !expandedInfo" class="gb_ff expand_header">
+      Kurzfassung
+      <i id="expand_icon" [hidden]="expandedInfo" class="fas fa-caret-down expand_icon" aria-hidden="true"></i>
+      <i id="expand_icon" [hidden]="!expandedInfo" class="fas fa-caret-up expand_icon" aria-hidden="true"></i>
+    </h2>
+    <div [hidden]="!expandedInfo" class="expand" id="expand_kurzinfo">
+      <section>
+        {{project.summary}}
+      </section>
+    </div>
+
+    <h2 id="beschreibung" (click)="expandedDesc = !expandedDesc" class="gb_ff expand_header">Beschreibung
+      <i id="expand_icon" [hidden]="expandedDesc" class="fas fa-caret-down expand_icon" aria-hidden="true"></i>
+      <i id="expand_icon" [hidden]="!expandedDesc" class="fas fa-caret-up expand_icon" aria-hidden="true"></i>
+    </h2>
+    <div [hidden]="!expandedDesc" class="expand" id="expand_beschreibung">
+      <section>
+          <div [innerHTML]="project.post_content"></div>
+
+      </section>
+    </div>
+
+
+    <h2 id="money_for" (click)="expandedMoney = !expandedMoney" class="gb_ff expand_header">
+      Wofür wird das eingesammelte Geld eingesetzt?
+      <i id="expand_icon" [hidden]="expandedMoney" class="fas fa-caret-down expand_icon" aria-hidden="true"></i>
+      <i id="expand_icon" [hidden]="!expandedMoney" class="fas fa-caret-up expand_icon" aria-hidden="true"></i>
+    </h2>
+    <div [hidden]="!expandedMoney" class="expand" id="expand_money_for">
+      <section>
+        <div id="etappen_section" class="section_content border_bottom clearfix">
+          <table id="etappen-level">
+
+            <tbody>
+              <tr *ngFor="let goal of project.goals.slice().reverse(), let i = index" [style.height.px]="(goal.amount_step / (project.goals[project.goals.length-1].amount/100))*4" class="level-1">
+                <td class="fill-level first"  [ngStyle]="stylish(project, goal, i)">
+                </td>
+                <td class="amount-level odd">
+                  {{goal.amount}} </td>
+                <td class="description-level">
+                  {{goal.description}} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div [innerHTML]="project.forwhat_money"></div>
+      </section>
+    </div>
+
+
+    <h2 id="why_ecocrowd" (click)="expandedEco = !expandedEco" class="gb_ff expand_header">
+      Warum ist das Projekt ein EcoCrowd Projekt?
+      <i id="expand_icon" [hidden]="expandedEco" class="fas fa-caret-down expand_icon" aria-hidden="true"></i>
+      <i id="expand_icon" [hidden]="!expandedEco" class="fas fa-caret-up expand_icon" aria-hidden="true"></i>
+    </h2>
+    <div [hidden]="!expandedEco" class="expand" id="expand_why_ecocrowd">
+      <section>
+        <div [innerHTML]="project.why_ecocrowd"></div>
+      </section>
+    </div>
+
+
+    <h2 id="who_ami" (click)="expandedWho = !expandedWho" class="gb_ff expand_header">
+      Erzähle uns etwas über dich.
+      <i id="expand_icon" [hidden]="expandedWho" class="fas fa-caret-down expand_icon" aria-hidden="true"></i>
+      <i id="expand_icon" [hidden]="!expandedWho" class="fas fa-caret-up expand_icon" aria-hidden="true"></i>
+    </h2>
+    <div [hidden]="!expandedWho" class="expand" id="expand_who_ami">
+      <section>
+        <div [innerHTML]="project.whoami"></div>
+      </section>
+    </div>
+
+
+    <h2 id="for_future" (click)="expandedFuture = !expandedFuture" class="gb_ff expand_header">
+      Wir gestalten die Zukunft, weil ...
+      <i id="expand_icon" [hidden]="expandedFuture" class="fas fa-caret-down expand_icon" aria-hidden="true"></i>
+      <i id="expand_icon" [hidden]="!expandedFuture" class="fas fa-caret-up expand_icon" aria-hidden="true"></i>
+    </h2>
+    <div [hidden]="!expandedFuture" class="expand" id="expand_for_future">
+      <section>
+        <div [innerHTML]="project.future2"></div>
+      </section>
+    </div>
+
+    <div align="center">
+      <div class="controls">
+        <div class="control-project-question">
+          <input class="btn" value="Feedback" id="login_feedback" disabled="">
+        </div>
+        <div class="control-project-follow">
+          <input class="btn" value="Gefällt mir" id="login_follow" disabled="">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <div class="col-12 col-xl-4 col-lg-4 col-md-12 col-sm-12"><app-project-info-secondary></app-project-info-secondary></div>
+</div>
+  <!-- .entry_content -->
+</div>

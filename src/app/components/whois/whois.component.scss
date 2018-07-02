@@ -1,0 +1,87 @@
+.whois {
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.dus-logo {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.info-box {
+    overflow: hidden;
+    height: auto;
+    background-color: var(--background-green);
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 5px 0 #ccc;
+    box-shadow: 0 0 5px 0 #ccc;
+    padding: 30px;
+}
+
+.how-to-video,
+.side-menu {
+    margin-top: 45px
+}
+.how-to-video{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.embed-responsive-item {
+    border-radius: 8px;
+}
+
+.side-menu {
+    aside {
+        margin-bottom: 25px;
+    }
+    ul li a {
+        padding-left: 20px;
+        margin-bottom: 2px;
+        display: block;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        &:hover {
+            border-radius: 8px;
+            background-color: var(--side-menu-hover);
+        }
+    }
+    .side-menu-sub {
+        float: left;
+    }
+    .side-menu-title {
+        text-transform: uppercase;
+        padding-bottom: 0;
+        padding-top: 0;
+        padding-left: 10px;
+        margin-top: 0;
+        margin-bottom: 4px;
+        color: var(--eco-grey);
+        font-weight: 700 !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .side-menu {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .info-box {
+        padding: 15px;
+    }
+    .side-menu {
+        display: flex;
+        .side-menu-sub {
+            justify-content: center;
+            display: flex;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .side-menu {
+        display: flex;
+    }
+}

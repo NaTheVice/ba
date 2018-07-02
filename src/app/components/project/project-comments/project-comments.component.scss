@@ -1,0 +1,60 @@
+.author{
+    font-weight: 700;
+    font-size: 15px;
+}
+.commentdate{
+    color: var(--byline-color);
+    font-size: 10px;
+}
+.commentbtns{
+  
+    right: 10px;
+    bottom: 4%;
+}
+
+.btn-submit{
+    margin-top: 10px;
+    margin-left: -4px;
+}
+
+.commentbtn{
+    font-size: 0.8em;
+    margin-left: 5px;
+    
+}
+
+.card{
+    margin-top: 20px;
+    border: none;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05)
+}
+
+.card-reply{
+    padding-left: 20px;
+}
+
+
+#comment {
+    width: 95%;
+}
+textarea {
+    display: inline-block;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    max-width: 400px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #f9f9f9;
+    height: 95px;
+    padding: 8px 10px;
+}
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+

@@ -1,0 +1,236 @@
+.mobile-header {
+  background: var(--background);
+  display: none;
+  position: fixed;
+  z-index: 999;
+}
+
+.the-nav {
+    background: var(--background);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .nav-left {
+        flex-grow: 3;
+        text-align: left;
+        a {
+            width: 33%;
+        }
+    }
+    .nav-middle {
+        flex-grow: 4;
+    }
+    .nav-right {
+        flex-grow: 3;
+        text-align: right;
+        margin-right: 8px;
+        .nav-right-reg,
+        .nav-right-sig {
+            width: 45%;
+        }
+        .nav.nav-right-sea {
+            width: 10%;
+        }
+    }
+    ul {
+        align-items: stretch;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        li {
+            margin-left: 8px;
+            width: 100%;
+            a {
+                font-weight: 600;
+                font-size: 1em;
+                //font-size: 1.5vw;
+                float: left;
+                margin-top: 35px;
+                //margin-top: 3vw;
+                padding-right: 3px;
+                text-align: left;
+                max-width: 170px;
+            }
+            &.eco-logo {
+                text-align: center;
+                margin-left: 0;
+                img {
+                    width: 284px;
+                    //width: 25vw;
+                }
+            }
+            .description_menue {
+                display: block;
+                text-transform: initial;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 300;
+                color: var(--eco-grey);
+                font-size: 0.875em;
+                //font-size: 1.1vw;
+            }
+            &.nav-right a{
+                float: right;
+            }
+        }
+    }
+}
+
+a.resToggle {
+    display: none;
+}
+
+.menu-headers {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    a.resToggle {
+      display: inline-block;
+      position: fixed;
+      right: 0;
+      top: 0;
+      padding: 25px;
+      padding-top: 25px;
+      z-index: 9999;
+      font-size: 16px;
+    }
+    .mobile-header {
+        display: block;
+        height: 80px;
+        width: 100%;
+    }
+    .search-big {
+        display: inline-block;
+        z-index: 99999;
+        position: fixed;
+        left: 0;
+        padding: 25px;
+        padding-top: 25px;
+        font-size: 16px;
+    }
+    .eco-logo-small {
+        display: inline-block;
+        width: 200px;
+        height: 60px;
+        position: fixed;
+        top: 40px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        img {
+     
+            width: 100%;
+        }
+    }
+    .the-nav {
+        padding: 0;
+        display: block;
+        z-index: 99999;
+        position: fixed;
+        border-bottom: 1px solid var(--link-byline);
+        border-right: 1px solid var(--link-byline);
+        width: 100%;
+        transform: translateX(-110%);
+        -webkit-transform: translateX(-110%);
+        li.nav-right a.nav-right-sig{
+            border: none;
+        }
+        li.nav-right a.nav-right-reg{
+            width: 97%;
+        }
+        .menu-header {
+            display: inline;
+            font-weight: 600;
+        }
+        .menu-headers {
+            display: inline-block;
+            width: 100%;
+            background-color: var(--eco-lila);
+            padding: 30px;
+            padding-left: 10px;
+            color: #fff;
+            font-size: 0.938em;
+        }
+        ul {
+            display: block;
+            li {
+                margin-top: 0;
+                &.nav-right a{
+                    float: left;
+                }
+                a {
+                    float: none;
+                    margin-top: 0px;
+                    padding: 15px 10px;
+                    display: block;
+                    font-size: 16px;
+                    border-bottom: 1px solid var(--link-byline);
+                    display: block;
+                    text-align: left;
+                    max-width: none;
+                    width: 97%;
+                    &.nav-right-sea {
+                        display: none;
+                    }
+                    .nav-right-reg,.nav-right-sig{
+                        width: 97%;
+                    }
+                    .description_menue{
+                        font-size: 0.875em;
+                    }
+                }
+            }
+        }
+        & .eco-logo {
+            display: none;
+        }
+        &.active {
+            animation: slide-in 0.7s forwards;
+            -webkit-animation: slide-in 0.7s forwards;
+            
+        }
+        &.inactive{
+          animation: slide-out 0.7s forwards;
+            -webkit-animation: slide-out 0.7s forwards;
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    a.resToggle{
+        padding-right: 10px;
+    }
+    .search-big{
+        padding-left: 10px;
+    }
+
+}
+
+@keyframes slide-in {
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@-webkit-keyframes slide-in {
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-110%);
+    }
+}
+
+@-webkit-keyframes slide-out {
+    0% {
+        -webkit-transform: translateX(0%);
+    }
+    100% {
+        -webkit-transform: translateX(-110%);
+    }
+}
